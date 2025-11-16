@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="NEUROED - Plataforma educativa que se adapta a TDAH, Autismo y Dislexia. Experiencia personalizada con IA para cada neuroperfil.">
+<meta name="keywords" content="TDAH, Autismo, Dislexia, Neurodivergencia, Educación inclusiva, Inteligencia Artificial, NEUROED">
+<meta name="author" content="NEUROED">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:title" content="NEUROED - Educación adaptada a cada mente">
+<meta property="og:description" content="La brecha educativa cognitiva es real. NEUROED la cierra con tecnología adaptativa.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1581091870622-81eec5f7f2d6?auto=format&fit=crop&w=1200&q=80">
+
+<title>NEUROED - Educación adaptada a cada mente</title>
+
+<!-- Preload critical resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+  :root {
+    --color-primary: #1d1d1f;
+    --color-secondary: #6e6e73;
+    --color-orange: #ff6b35;
+    --color-orange-light: #f7931e;
+    --color-blue: #0071e3;
+    --color-blue-light: #00aaff;
+    --color-green: #34c759;
+    --color-green-light: #30d158;
+    --color-yellow: #ffcc00;
+    --color-bg-light: #fbfbfd;
+    --color-bg-section: #f5f5f7;
+    --color-bg-dark: #000;
+    
+    --gradient-orange: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    --gradient-blue: linear-gradient(135deg, #0071e3 0%, #00aaff 100%);
+    --gradient-green: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+    --gradient-yellow: linear-gradient(135deg, #ffcc00 0%, #ffaa00 100%);
+    
+    --section-spacing: 7.5rem;
+    
+    --ease-apple: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --duration-normal: 1s;
+    --duration-slow: 1.2s;
+    
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-normal: -0.01em;
+  }
+
+  .font-inter { font-family: 'Inter', sans-serif; }
+
+  * {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: hidden;
+    background: #fff;
+    color: var(--color-primary);
+  }
+
+  .apple-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .apple-text {
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-tight);
+    line-height: 1.05;
+  }
+
+  .apple-subtitle {
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-normal);
+    line-height: 1.4;
+    color: var(--color-secondary);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+    transition: opacity 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .scale-in.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .blur-in {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.05);
+    transition: opacity 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .blur-in.visible {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+
+  .text-reveal {
+    opacity: 0;
+    clip-path: inset(0 100% 0 0);
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .text-reveal.visible {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+
+  .parallax {
+    will-change: transform;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    
+    .fade-in,
+    .scale-in,
+    .fade-up,
+    .blur-in {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(0, 0, 0, 0.12);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16);
+  }
+
+  @supports (backdrop-filter: blur(20px)) {
+    .glass-card {
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+    
+    .glass-card:hover {
+      backdrop-filter: saturate(200%) blur(30px);
+      -webkit-backdrop-filter: saturate(200%) blur(30px);
+    }
+  }
+
+  .video-container {
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .section-spacing {
+    padding: var(--section-spacing) 0;
+  }
+
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  @supports (backdrop-filter: blur(20px)) {
+    .nav-bar {
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+  }
+
+  .nav-bar.scrolled {
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .apple-button {
+    background: var(--color-blue);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 980px;
+    font-size: 17px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .apple-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  .apple-button:hover {
+    background: #0077ed;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+  }
+
+  .apple-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .apple-button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  }
+
+  .apple-button:focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 4px;
+  }
+
+  .stat-number {
+    font-size: 96px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-blue), var(--color-blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .badge-tdah {
+    background: rgba(255, 107, 53, 0.15);
+    color: var(--color-orange);
+  }
+
+  .badge-autismo {
+    background: rgba(0, 113, 227, 0.15);
+    color: var(--color-blue);
+  }
+
+  .badge-dislexia {
+    background: rgba(52, 199, 89, 0.15);
+    color: var(--color-green);
+  }
+
+  .distort-text {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .incomplete-text {
+    opacity: 0;
+    animation: fadeIncomplete 0.5s ease forwards;
+  }
+
+  @keyframes fadeIncomplete {
+    to { opacity: 1; }
+  }
+
+  .demo-algebra {
+    background: #f5f5f7;
+    border-radius: 24px;
+    padding: 60px;
+    margin: 40px 0;
+    transition: all 0.6s var(--ease-apple);
+  }
+
+  .demo-algebra.autismo {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  }
+
+  .demo-algebra.dislexia {
+    background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+  }
+
+  .demo-algebra.tdah {
+    background: linear-gradient(135deg, #ffe5d9 0%, #ffd4c1 100%);
+  }
+
+  @media (max-width: 1024px) {
+    .stat-number {
+      font-size: 72px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --section-spacing: 5rem;
+    }
+    
+    .stat-number {
+      font-size: 64px;
+    }
+    
+    .apple-hero {
+      min-height: 90vh;
+    }
+
+    .demo-algebra {
+      padding: 40px 30px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stat-number {
+      font-size: 48px;
+    }
+  }
+
+  img {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+
+  img.loaded {
+    opacity: 1;
+  }
+
+  h1, h2, h3 {
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+
+  .text-scramble {
+    display: inline-block;
+  }
+
+  .team-member {
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .team-member:hover {
+    transform: translateY(-12px);
+  }
+
+  .team-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px;
+    border: 3px solid var(--color-blue);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+  }
+
+  .team-member:hover .team-photo {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 16px 48px rgba(0, 113, 227, 0.5);
+  }
+
+  .team-member > div:first-child {
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .team-member:hover > div:first-child {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-3d-container {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 0;
+  }
+
+  .carousel-3d {
+    display: flex;
+    gap: 2rem;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 4rem 2rem;
+    position: relative;
+  }
+
+  .carousel-3d-item {
+    flex-shrink: 0;
+    transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity: 0.3;
+    transform: scale(0.82) translateY(20px);
+    filter: blur(4px);
+  }
+
+  .carousel-3d-item.active {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
+    z-index: 10;
+    filter: blur(0) !important;
+  }
+
+  .carousel-3d-item:not(.active) {
+    opacity: 0.4;
+    transform: scale(0.88) translateY(10px);
+    filter: blur(2px);
+  }
+
+  .carousel-3d-item.far-left,
+  .carousel-3d-item.far-right {
+    opacity: 0;
+    transform: scale(0.7) translateY(30px);
+    filter: blur(8px);
+  }
+
+  .carousel-3d-item.active:hover {
+    transform: scale(1.03) translateY(-5px) !important;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .section-dark {
+    background: var(--color-bg-dark);
+    color: white;
+  }
+
+  .section-dark h1,
+  .section-dark h2,
+  .section-dark h3 {
+    color: white;
+  }
+
+  .section-dark .apple-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+  }
+</style>
+</head>
+
+<body class="font-inter">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">
+    Saltar al contenido principal
+  </a>
+
+  <nav class="nav-bar" id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="max-w-7xl mx-auto px-8 py-4 flex justify-between items-center">
+      <div class="text-xl font-semibold" style="color: var(--color-primary);">NEUROED</div>
+      <div class="space-x-8 hidden md:flex">
+        <a href="#inicio" class="text-sm hover:text-blue-600 transition-colors">Inicio</a>
+        <a href="#problema" class="text-sm hover:text-blue-600 transition-colors">Problema</a>
+        <a href="#solucion" class="text-sm hover:text-blue-600 transition-colors">Solución</a>
+        <a href="#equipo" class="text-sm hover:text-blue-600 transition-colors">Experiencia</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <section id="inicio" class="apple-hero relative" style="background: var(--color-bg-light);">
+      <div class="max-w-6xl mx-auto px-8 text-center relative z-10">
+        <h1 class="text-5xl md:text-7xl apple-text mb-12 blur-in px-4" style="color: var(--color-primary); line-height: 1.15;">
+          <span id="intro-text">¿Imaginas letras que saltan al leer?</span>
+        </h1>
+        
+        <div class="mt-12 blur-in" style="transition-delay: 0.3s;">
+          <p class="text-xl apple-subtitle">
+            Desliza hacia abajo para experimentar
+          </p>
+          <div class="mt-8 animate-bounce">
+            <svg class="w-8 h-8 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative" style="background: white;">
+      <div class="max-w-5xl mx-auto px-8 text-center">
+        <h2 class="text-5xl md:text-6xl apple-text mb-16 fade-in" id="scramble-text">
+          Imaginen que durante esta presentación las letras cambian de lugar…
+        </h2>
+
+        <div class="mb-16 fade-in" style="transition-delay: 0.2s;">
+          <p class="text-4xl md:text-5xl apple-text mb-8" style="color: var(--color-primary);">
+            …o que les cuesta prestar <span id="atencion-text" style="color: var(--color-orange); font-weight: 600;">atención</span>
+          </p>
+        </div>
+
+        <div class="fade-in" style="transition-delay: 0.4s;">
+          <p class="text-3xl md:text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+            Para millones de personas, esto no es un ejemplo…
+          </p>
+          <p class="text-3xl md:text-4xl font-bold" style="color: var(--color-blue);">
+            es su día a día.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="problema" class="section-spacing relative section-dark">
+      <div class="max-w-6xl mx-auto px-8">
+        <div class="text-center mb-24 fade-in">
+          <h2 class="text-5xl md:text-6xl apple-text mb-12">
+            El sistema educativo está diseñado para que los alumnos se adapten a él…
+          </h2>
+          <p class="text-3xl md:text-4xl" style="color: rgba(255, 255, 255, 0.9);">
+            …pero ¿qué sucede cuando es imposible adaptarse?
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-20">
+          <div class="stat-card fade-up" style="transition-delay: 0.1s;">
+            <div class="text-6xl md:text-7xl font-bold mb-4" style="color: var(--color-blue);">1/100</div>
+            <h3 class="text-2xl font-semibold mb-3" style="color: var(--color-primary);">Espectro Autista</h3>
+            <p class="text-base text-gray-600 mb-4">
+              1 de cada 100 personas está dentro del espectro autista
+            </p>
+            <p class="text-sm text-gray-500 italic">
+              Fuente: Organización Mundial de la Salud (OMS)
+            </p>
+          </div>
+
+          <div class="stat-card fade-up" style="transition-delay: 0.2s;">
+            <div class="text-6xl md:text-7xl font-bold mb-4" style="color: var(--color-green);">5-15%</div>
+            <h3 class="text-2xl font-semibold mb-3" style="color: var(--color-primary);">Dislexia</h3>
+            <p class="text-base text-gray-600 mb-4">
+              Entre 5% y 15% de la población tiene dislexia
+            </p>
+            <p class="text-sm text-gray-500 italic">
+              Fuente: American Psychiatric Association / UNAM
+            </p>
+          </div>
+
+          <div class="stat-card fade-up" style="transition-delay: 0.3s;">
+            <div class="text-6xl md:text-7xl font-bold mb-4" style="color: var(--color-orange);">5-7%</div>
+            <h3 class="text-2xl font-semibold mb-3" style="color: var(--color-primary);">TDAH</h3>
+            <p class="text-base text-gray-600 mb-4">
+              El TDAH afecta entre 5% y 7% de la población mundial
+            </p>
+            <p class="text-sm text-gray-500 italic">
+              Fuente: Estudios epidemiológicos globales
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative" style="background: white;">
+      <div class="max-w-5xl mx-auto px-8 text-center">
+        <div class="space-y-20">
+          <div class="fade-in">
+            <p class="text-4xl md:text-5xl apple-text" style="color: var(--color-primary);">
+              Así como existe la brecha salarial entre hombres y mujeres…
+            </p>
+          </div>
+
+          <div class="fade-in" style="transition-delay: 0.2s;">
+            <p class="text-4xl md:text-5xl apple-text" style="color: var(--color-primary);">
+              …y la brecha económica entre clases sociales…
+            </p>
+          </div>
+
+          <div class="fade-in" style="transition-delay: 0.4s;">
+            <p class="text-5xl md:text-6xl font-bold" style="color: var(--color-blue);">
+              …también existe una brecha educativa entre sistemas cognitivos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative" style="background: var(--color-bg-section);">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-5xl md:text-6xl apple-text text-center mb-20 fade-in">
+          Por qué importa
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.1s;">
+            <div class="text-5xl mb-6">😔</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Frustración académica crónica
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Estudiantes capaces que se sienten incapaces por no encajar en el modelo tradicional.
+            </p>
+          </div>
+
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.2s;">
+            <div class="text-5xl mb-6">🚪</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Deserción por falta de adaptación
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Miles abandonan sus estudios no por falta de interés, sino por sistemas inflexibles.
+            </p>
+          </div>
+
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.3s;">
+            <div class="text-5xl mb-6">💔</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Baja autoestima y ansiedad
+            </h3>
+            <p class="text-lg apple-subtitle">
+              El impacto emocional de no poder "seguir el ritmo" es profundo y duradero.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-16 fade-in" style="transition-delay: 0.4s;">
+          <p class="text-3xl md:text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+            El problema no es su capacidad.
+          </p>
+          <p class="text-3xl md:text-4xl font-bold" style="color: var(--color-blue);">
+            El problema es que esperamos que todos aprendan de la misma manera.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucion" class="section-spacing relative" style="background: white;">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-24 fade-in">
+          <h2 class="text-5xl md:text-6xl apple-text mb-6">
+            Nuestra solución
+          </h2>
+          <p class="text-2xl apple-subtitle max-w-3xl mx-auto">
+            Eduki: Una plataforma que se adapta a cada neuroperfil con tecnología de IA
+          </p>
+        </div>
+
+        <div class="mb-32 fade-in">
+          <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div>
+              <span class="badge badge-autismo mb-6">1. Detección Cognitiva</span>
+              <h3 class="text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+                Chatbot de detección cognitiva
+              </h3>
+              <p class="text-xl apple-subtitle mb-6">
+                No es diagnóstico médico, pero identifica características mediante escalas validadas científicamente.
+              </p>
+              <ul class="space-y-3 text-lg" style="color: var(--color-primary);">
+                <li>✓ Preguntas basadas en ASRS, AQ-10, Sensory Profile</li>
+                <li>✓ Identificación de patrones de TDAH, Autismo y Dislexia</li>
+                <li>✓ Redirección a experiencia adaptada</li>
+              </ul>
+            </div>
+            <div class="video-container">
+              <img
+                src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=800&q=80"
+                alt="Interfaz de chatbot conversacional con cuestionario de detección cognitiva"
+                class="w-full"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-32 fade-in">
+          <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <div class="order-2 md:order-1 video-container">
+              <img
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80"
+                alt="Diferentes interfaces de usuario adaptadas según el neuroperfil"
+                class="w-full"
+                loading="lazy"
+                onload="this.classList.add('loaded')"
+              />
+            </div>
+            <div class="order-1 md:order-2">
+              <span class="badge badge-dislexia mb-6">2. Adaptación Visual</span>
+              <h3 class="text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+                Interfaz adaptativa
+              </h3>
+              <p class="text-xl apple-subtitle mb-6">
+                La experiencia visual cambia completamente según el perfil detectado.
+              </p>
+              <ul class="space-y-3 text-lg" style="color: var(--color-primary);">
+                <li>✓ Tipografías optimizadas (OpenDyslexic para dislexia)</li>
+                <li>✓ Paletas de colores y contrastes personalizados</li>
+                <li>✓ Nivel de estímulos ajustado</li>
+                <li>✓ Estructura de navegación adaptada</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in">
+          <div class="text-center mb-16">
+            <span class="badge badge-tdah mb-6">3. Contenido Adaptativo</span>
+            <h3 class="text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+              Demo de álgebra básica
+            </h3>
+            <p class="text-xl apple-subtitle max-w-3xl mx-auto">
+              El mismo contenido matemático, presentado de manera completamente diferente
+            </p>
+          </div>
+
+          <div class="carousel-3d-container max-w-6xl mx-auto">
+            <div id="algebra-carousel" class="carousel-3d scrollbar-hide">
+              
+              <div class="carousel-3d-item w-80 md:w-96" data-index="0">
+                <div class="rounded-3xl p-8 h-full" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); box-shadow: 0 20px 60px rgba(0, 113, 227, 0.3);">
+                  <span class="badge badge-autismo mb-4">💙 Autismo</span>
+                  <h4 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">Interfaz limpia</h4>
+                  <div class="bg-white rounded-2xl p-6 mb-4">
+                    <p class="text-5xl font-bold text-center mb-4" style="color: var(--color-blue);">5 + 3 = ?</p>
+                    <div class="flex justify-center gap-3">
+                      <button class="px-6 py-3 bg-blue-100 rounded-xl text-lg font-semibold">8</button>
+                    </div>
+                  </div>
+                  <ul class="text-sm space-y-2" style="color: var(--color-primary);">
+                    <li>✓ Estímulos visuales mínimos</li>
+                    <li>✓ Un elemento a la vez</li>
+                    <li>✓ Estructura predecible</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="carousel-3d-item active w-80 md:w-96" data-index="1">
+                <div class="rounded-3xl p-8 h-full" style="background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%); box-shadow: 0 20px 60px rgba(52, 199, 89, 0.3);">
+                  <span class="badge badge-dislexia mb-4">💛 Dislexia</span>
+                  <h4 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">Lectura optimizada</h4>
+                  <div class="bg-white rounded-2xl p-6 mb-4">
+                    <p class="text-4xl font-bold text-center mb-4 tracking-wide" style="color: var(--color-green); line-height: 1.8;">
+                      5  +  3  =  ?
+                    </p>
+                    <div class="flex justify-center gap-3">
+                      <button class="px-6 py-3 bg-green-100 rounded-xl text-lg font-semibold">8</button>
+                    </div>
+                  </div>
+                  <ul class="text-sm space-y-2" style="color: var(--color-primary);">
+                    <li>✓ Tipografía especializada</li>
+                    <li>✓ Espaciado aumentado</li>
+                    <li>✓ Alto contraste</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="carousel-3d-item w-80 md:w-96" data-index="2">
+                <div class="rounded-3xl p-8 h-full" style="background: linear-gradient(135deg, #ffe5d9 0%, #ffd4c1 100%); box-shadow: 0 20px 60px rgba(255, 107, 53, 0.3);">
+                  <span class="badge badge-tdah mb-4">🧡 TDAH</span>
+                  <h4 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">Modo enfoque</h4>
+                  <div class="bg-white rounded-2xl p-6 mb-4 border-4 border-orange-400">
+                    <div class="bg-orange-50 rounded-xl p-4 mb-3">
+                      <p class="text-2xl font-bold text-center" style="color: var(--color-orange);">Paso 1 de 3 ✓</p>
+                    </div>
+                    <p class="text-4xl font-bold text-center mb-4" style="color: var(--color-orange);">5 + 3 = ?</p>
+                    <div class="flex justify-center gap-3">
+                      <button class="px-6 py-3 bg-orange-100 rounded-xl text-lg font-semibold">8</button>
+                    </div>
+                  </div>
+                  <ul class="text-sm space-y-2" style="color: var(--color-primary);">
+                    <li>✓ Pasos cortos y claros</li>
+                    <li>✓ Retroalimentación inmediata</li>
+                    <li>✓ Enfoque en una tarea</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="flex justify-center gap-3 mt-8">
+              <button id="algebra-prev" class="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">
+                ←
+              </button>
+              <div class="flex items-center gap-2">
+                <div class="carousel-dot w-2 h-2 rounded-full bg-gray-300" data-index="0"></div>
+                <div class="carousel-dot w-2 h-2 rounded-full bg-blue-600" data-index="1"></div>
+                <div class="carousel-dot w-2 h-2 rounded-full bg-gray-300" data-index="2"></div>
+              </div>
+              <button id="algebra-next" class="px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-colors">
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección de Validación -->
+        <div class="mt-32 fade-in">
+          <div class="max-w-6xl mx-auto px-8">
+            <div class="text-center mb-16">
+              <span class="inline-block px-6 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-6">
+                ✓ Validación Técnica
+              </span>
+              <h3 class="text-4xl font-semibold mb-6" style="color: var(--color-primary);">
+                Precisión comprobada
+              </h3>
+              <p class="text-xl apple-subtitle max-w-3xl mx-auto">
+                Realizamos pruebas con respuestas guiadas para validar la efectividad del chatbot de detección
+              </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+              <!-- Estadísticas -->
+              <div class="glass-card p-12 rounded-3xl">
+                <div class="mb-8">
+                  <div class="flex items-end justify-center gap-4 mb-8">
+                    <div class="text-center">
+                      <div class="text-7xl font-bold mb-2" style="color: var(--color-green);">10</div>
+                      <p class="text-sm apple-subtitle">Intentos</p>
+                    </div>
+                    <div class="text-6xl mb-4" style="color: var(--color-secondary);">/</div>
+                    <div class="text-center">
+                      <div class="text-7xl font-bold mb-2" style="color: var(--color-green);">10</div>
+                      <p class="text-sm apple-subtitle">Aciertos</p>
+                    </div>
+                  </div>
+                  
+                  <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-3 bg-green-50 px-8 py-4 rounded-full">
+                      <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      <span class="text-2xl font-bold text-green-700">100% de acierto</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-green-500 to-green-400 rounded-2xl p-8 text-white text-center">
+                    <div class="text-6xl font-bold mb-2">91%</div>
+                    <p class="text-lg font-medium">Precisión en la estimación del perfil</p>
+                  </div>
+                </div>
+
+                <div class="space-y-4 text-sm" style="color: var(--color-secondary);">
+                  <div class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <p><strong>Metodología:</strong> Respuestas guiadas basadas en perfiles conocidos</p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <p><strong>Resultado:</strong> Asignación correcta al perfil correspondiente en todos los casos</p>
+                  </div>
+                  <div class="flex items-start gap-3">
+                    <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg class="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    </div>
+                    <p><strong>Precisión:</strong> Estimación del 91% de confianza en la clasificación</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Visualización gráfica -->
+              <div class="relative">
+                <div class="glass-card p-8 rounded-3xl">
+                  <h4 class="text-xl font-semibold mb-6 text-center" style="color: var(--color-primary);">
+                    Distribución de resultados
+                  </h4>
+                  
+                  <!-- Gráfico de barras simple -->
+                  <div class="space-y-6">
+                    <div>
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium" style="color: var(--color-primary);">TDAH</span>
+                        <span class="text-sm font-semibold" style="color: var(--color-orange);">100%</span>
+                      </div>
+                      <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full transition-all duration-1000" style="width: 100%; background: var(--gradient-orange);"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium" style="color: var(--color-primary);">Autismo</span>
+                        <span class="text-sm font-semibold" style="color: var(--color-blue);">100%</span>
+                      </div>
+                      <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full transition-all duration-1000" style="width: 100%; background: var(--gradient-blue);"></div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium" style="color: var(--color-primary);">Dislexia</span>
+                        <span class="text-sm font-semibold" style="color: var(--color-green);">100%</span>
+                      </div>
+                      <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full transition-all duration-1000" style="width: 100%; background: var(--gradient-green);"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-8 p-4 bg-blue-50 rounded-2xl">
+                    <p class="text-sm text-center" style="color: var(--color-blue);">
+                      <strong>Nota:</strong> Las pruebas se realizaron con casos de control para validar la precisión del algoritmo de detección
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Elemento decorativo -->
+                <div class="absolute -top-4 -right-4 w-24 h-24 bg-green-100 rounded-full opacity-50 blur-2xl"></div>
+                <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-100 rounded-full opacity-50 blur-2xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative section-dark" style="overflow: hidden;">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full opacity-20 blur-3xl"></div>
+      
+      <div class="max-w-6xl mx-auto px-8 text-center relative z-10">
+        <h2 class="text-6xl md:text-8xl apple-text mb-20 fade-in" style="background: linear-gradient(90deg, #fff, #a0a0a0); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+          Escalabilidad
+        </h2>
+
+        <div class="space-y-32 mt-32">
+          <div class="fade-in">
+            <div class="inline-block mb-12">
+              <div class="px-8 py-3 rounded-full" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h3 class="text-2xl md:text-3xl font-semibold" style="color: rgba(255, 255, 255, 0.95);">
+                  Escalabilidad horizontal
+                </h3>
+              </div>
+            </div>
+            
+            <p class="text-3xl md:text-4xl max-w-4xl mx-auto mb-16" style="color: rgba(255, 255, 255, 0.9); font-weight: 300; line-height: 1.4;">
+              NEUROED puede ampliarse a más neurodivergencias
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              <div class="glass-card p-6 rounded-2xl scale-in hover:scale-105 transition-transform" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.3); transition-delay: 0.1s;">
+                <div class="text-5xl mb-3">🔢</div>
+                <h4 class="text-lg font-semibold text-white">Discalculia</h4>
+              </div>
+              
+              <div class="glass-card p-6 rounded-2xl scale-in hover:scale-105 transition-transform" style="background: rgba(236, 72, 153, 0.15); border-color: rgba(236, 72, 153, 0.3); transition-delay: 0.2s;">
+                <div class="text-5xl mb-3">✍️</div>
+                <h4 class="text-lg font-semibold text-white">Disgrafía</h4>
+              </div>
+              
+              <div class="glass-card p-6 rounded-2xl scale-in hover:scale-105 transition-transform" style="background: rgba(251, 146, 60, 0.15); border-color: rgba(251, 146, 60, 0.3); transition-delay: 0.3s;">
+                <div class="text-5xl mb-3">👂</div>
+                <h4 class="text-lg font-semibold text-white">Proc. Sensorial</h4>
+              </div>
+              
+              <div class="glass-card p-6 rounded-2xl scale-in hover:scale-105 transition-transform" style="background: rgba(34, 197, 94, 0.15); border-color: rgba(34, 197, 94, 0.3); transition-delay: 0.4s;">
+                <div class="text-5xl mb-3">➕</div>
+                <h4 class="text-lg font-semibold text-white">Y más...</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-in" style="transition-delay: 0.3s;">
+            <div class="inline-block mb-12">
+              <div class="px-8 py-3 rounded-full" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                <h3 class="text-2xl md:text-3xl font-semibold" style="color: rgba(255, 255, 255, 0.95);">
+                  Escalabilidad vertical
+                </h3>
+              </div>
+            </div>
+            
+            <p class="text-3xl md:text-4xl max-w-4xl mx-auto mb-16" style="color: rgba(255, 255, 255, 0.9); font-weight: 300; line-height: 1.4;">
+              Desde primaria hasta educación para adultos
+            </p>
+
+            <div class="relative max-w-4xl mx-auto">
+              <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-orange-500 transform -translate-x-1/2"></div>
+              
+              <div class="space-y-12">
+                <div class="flex items-center justify-start scale-in" style="transition-delay: 0.1s;">
+                  <div class="w-1/2 pr-8 text-right">
+                    <div class="inline-block glass-card px-6 py-4 rounded-2xl" style="background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.4);">
+                      <h4 class="text-xl font-semibold text-white">🎒 Primaria</h4>
+                    </div>
+                  </div>
+                  <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-2xl z-10 flex-shrink-0">📚</div>
+                  <div class="w-1/2"></div>
+                </div>
+
+                <div class="flex items-center justify-end scale-in" style="transition-delay: 0.2s;">
+                  <div class="w-1/2"></div>
+                  <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-2xl z-10 flex-shrink-0">📖</div>
+                  <div class="w-1/2 pl-8 text-left">
+                    <div class="inline-block glass-card px-6 py-4 rounded-2xl" style="background: rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.4);">
+                      <h4 class="text-xl font-semibold text-white">🎓 Secundaria</h4>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-start scale-in" style="transition-delay: 0.3s;">
+                  <div class="w-1/2 pr-8 text-right">
+                    <div class="inline-block glass-card px-6 py-4 rounded-2xl" style="background: rgba(249, 115, 22, 0.2); border-color: rgba(249, 115, 22, 0.4);">
+                      <h4 class="text-xl font-semibold text-white">🏛️ Universidad</h4>
+                    </div>
+                  </div>
+                  <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center text-2xl z-10 flex-shrink-0">🎯</div>
+                  <div class="w-1/2"></div>
+                </div>
+
+                <div class="flex items-center justify-end scale-in" style="transition-delay: 0.4s;">
+                  <div class="w-1/2"></div>
+                  <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-2xl z-10 flex-shrink-0">💼</div>
+                  <div class="w-1/2 pl-8 text-left">
+                    <div class="inline-block glass-card px-6 py-4 rounded-2xl" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.4);">
+                      <h4 class="text-xl font-semibold text-white">👨‍💼 Educación para adultos</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative" style="background: var(--color-bg-section);">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-5xl md:text-6xl apple-text text-center mb-20 fade-in">
+          Tecnología
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.1s;">
+            <div class="text-5xl mb-6">🤖</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              IA Generativa
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Generación automática de contenido adaptado a cada perfil neurocognitivo con modelos de lenguaje avanzados.
+            </p>
+          </div>
+
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.2s;">
+            <div class="text-5xl mb-6">📊</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Análisis de patrones
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Identificación de patrones de lenguaje y comportamiento para personalizar la experiencia educativa.
+            </p>
+          </div>
+
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.3s;">
+            <div class="text-5xl mb-6">♿</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Accesibilidad WCAG
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Cumplimiento de estándares internacionales de accesibilidad cognitiva y visual (WCAG 2.1 AA).
+            </p>
+          </div>
+
+          <div class="glass-card p-10 rounded-3xl fade-in" style="transition-delay: 0.4s;">
+            <div class="text-5xl mb-6">🧠</div>
+            <h3 class="text-2xl font-semibold mb-4" style="color: var(--color-primary);">
+              Diseño neurocentrado
+            </h3>
+            <p class="text-lg apple-subtitle">
+              Basado en investigación neurocientífica y diseñado con la participación de personas neurodivergentes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-spacing relative section-dark">
+      <div class="max-w-4xl mx-auto px-8 text-center">
+        <h2 class="text-5xl md:text-6xl apple-text mb-12 fade-in">
+          Explora la experiencia completa
+        </h2>
+        
+        <div class="fade-in" style="transition-delay: 0.2s;">
+          <a href="https://tu-app-neuroed.com" target="_blank" rel="noopener noreferrer" class="apple-button text-lg mb-12 inline-block">
+            Probar NEUROED
+          </a>
+        </div>
+
+        <div class="mt-20 fade-in" style="transition-delay: 0.4s;">
+          <p class="text-lg mb-6" style="color: rgba(255, 255, 255, 0.7);">O escanea el código QR</p>
+          <div class="inline-block bg-white p-8 rounded-3xl">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://tu-app-neuroed.com"
+              alt="Código QR para acceder a NEUROED"
+              class="w-64 h-64"
+              loading="lazy"
+              onload="this.classList.add('loaded')"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipo" class="section-spacing relative" style="background: white;">
+      <div class="max-w-6xl mx-auto px-8">
+        <h2 class="text-5xl md:text-6xl apple-text text-center mb-20 fade-in">
+          En el Hackathon
+        </h2>
+
+        <!-- Carrusel automático de fotos -->
+        <div class="relative max-w-4xl mx-auto mb-20 fade-in">
+          <div class="hackathon-carousel relative rounded-3xl overflow-hidden shadow-2xl" style="height: 500px;">
+            <!-- Las imágenes irán aquí -->
+            <div class="hackathon-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img1.jpg" 
+                alt="Equipo trabajando en el hackathon"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+
+            <div class="hackathon-slide active absolute inset-0 opacity-100 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img2.jpg" 
+                alt="Momento de colaboración en equipo"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+
+            <div class="hackathon-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img3.jpg" 
+                alt="Presentando nuestro proyecto"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+
+            <div class="hackathon-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img4.jpg" 
+                alt="Celebrando logros"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+
+            <div class="hackathon-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img5.jpg" 
+                alt="Momento de concentración"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+
+            <div class="hackathon-slide absolute inset-0 opacity-0 transition-opacity duration-1000">
+              <img 
+                src="https://raw.githubusercontent.com/Adricors/images/main/img6.jpg" 
+                alt="Equipo completo"
+                class="w-full h-full object-cover"
+                onload="this.classList.add('loaded')"
+              />
+              <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-8">
+                <p class="text-white text-xl font-semibold"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Indicadores de progreso -->
+          <div class="flex justify-center gap-2 mt-6">
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="0"></div>
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-blue-600 transition-all duration-300" data-index="1"></div>
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="2"></div>
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="3"></div>
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="4"></div>
+            <div class="hackathon-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="5"></div>
+          </div>
+        </div>
+
+        <div class="text-center fade-in" style="transition-delay: 0.5s;">
+          <p class="text-xl apple-subtitle mb-8">Presentado en</p>
+          <div class="inline-block bg-gray-100 px-12 py-6 rounded-2xl">
+            <p class="text-3xl font-bold" style="color: var(--color-primary);">TechTalents</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-12 border-t" style="border-color: rgba(0, 0, 0, 0.08); background: var(--color-bg-section);" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <p class="text-sm apple-subtitle">
+        © 2025 NEUROED. Educación adaptada para TDAH, Autismo y Dislexia.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const CONFIG = {
+      OBSERVER_THRESHOLD: 0.3,
+      ANIMATION_THRESHOLD: 0.1,
+      ANIMATION_ROOT_MARGIN: '0px 0px -100px 0px',
+      SCRAMBLE_INTERVAL: 800,
+      SCRAMBLE_PROBABILITY: 0.7
+    };
+
+    (function initIntroEffect() {
+      const introText = document.getElementById('intro-text');
+      if (!introText) return;
+
+      let isScrolling = false;
+      let scrollTimeout;
+
+      window.addEventListener('scroll', () => {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+
+        const scrollY = window.scrollY;
+        const chars = introText.textContent.split('');
+        
+        const distortedText = chars.map((char, index) => {
+          if (char === ' ') return char;
+          const offset = Math.sin((scrollY + index * 10) / 50) * 3;
+          return `<span class="distort-text" style="display: inline-block; transform: translateY(${offset}px);">${char}</span>`;
+        }).join('');
+        
+        introText.innerHTML = distortedText;
+
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+        }, 150);
+      }, { passive: true });
+    })();
+
+    (function initScrambleEffect() {
+      const scrambleElement = document.getElementById('scramble-text');
+      if (!scrambleElement) return;
+
+      const originalText = 'Imaginen que durante esta presentación las letras cambian de lugar…';
+      
+      const confusableLetters = {
+        'b': 'd', 'd': 'b', 'p': 'q', 'q': 'p',
+        'n': 'u', 'u': 'n', 'm': 'w', 'w': 'm',
+        'a': 'e', 'e': 'a', 'o': '0', '0': 'o',
+        's': 'z', 'z': 's', 'l': 'i', 'i': 'l',
+        'r': 't', 't': 'r'
+      };
+
+      let scrambleInterval = null;
+
+      function doScramble() {
+        const scrambled = originalText.split('').map((char) => {
+          const lower = char.toLowerCase();
+          if (Math.random() > CONFIG.SCRAMBLE_PROBABILITY && confusableLetters[lower]) {
+            const replacement = confusableLetters[lower];
+            return char === char.toUpperCase() ? replacement.toUpperCase() : replacement;
+          }
+          return char;
+        }).join('');
+        
+        scrambleElement.textContent = scrambled;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !scrambleInterval) {
+            scrambleInterval = setInterval(doScramble, CONFIG.SCRAMBLE_INTERVAL);
+          } else if (!entry.isIntersecting && scrambleInterval) {
+            clearInterval(scrambleInterval);
+            scrambleInterval = null;
+            scrambleElement.textContent = originalText;
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(scrambleElement);
+    })();
+
+    (function initAtencionEffect() {
+      const atencionText = document.getElementById('atencion-text');
+      if (!atencionText) return;
+
+      const sequence = [
+        'atención',
+        'aten—',
+        'at—',
+        'atención',
+        'aten—',
+        'atenci—'
+      ];
+
+      let currentIndex = 0;
+      let intervalId = null;
+
+      function changeText() {
+        atencionText.textContent = sequence[currentIndex];
+        currentIndex = (currentIndex + 1) % sequence.length;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !intervalId) {
+            intervalId = setInterval(changeText, 1500);
+          } else if (!entry.isIntersecting && intervalId) {
+            clearInterval(intervalId);
+            intervalId = null;
+            atencionText.textContent = 'atención';
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(atencionText);
+    })();
+
+    (function initScrollAnimations() {
+      const observerOptions = {
+        threshold: CONFIG.ANIMATION_THRESHOLD,
+        rootMargin: CONFIG.ANIMATION_ROOT_MARGIN
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in, .scale-in, .fade-up, .blur-in').forEach(el => {
+        observer.observe(el);
+      });
+    })();
+
+    (function initNavbarScroll() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+
+      let ticking = false;
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+            
+            ticking = false;
+          });
+
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    (function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          
+          if (targetId === '#') return;
+          
+          const target = document.querySelector(targetId);
+          
+          if (target) {
+            const offsetTop = target.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    })();
+
+    (function initImageLoading() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        if (img.complete) {
+          img.classList.add('loaded');
+        }
+      });
+    })();
+
+    (function initCarousels() {
+      function setupSimpleCarousel(carousel, prevBtn, nextBtn, startIndex = 1) {
+        if (!carousel) return;
+
+        const items = Array.from(carousel.querySelectorAll('.carousel-3d-item'));
+        const totalItems = items.length;
+        
+        const container = carousel.closest('.carousel-3d-container').parentElement;
+        const dots = Array.from(container.querySelectorAll('.carousel-dot'));
+        
+        let currentIndex = startIndex;
+
+        function updateCarousel(smooth = true) {
+          items.forEach((item, index) => {
+            item.classList.remove('active', 'far-left', 'far-right');
+            
+            if (index === currentIndex) {
+              item.classList.add('active');
+            } else if (Math.abs(index - currentIndex) >= 2) {
+              if (index < currentIndex) {
+                item.classList.add('far-left');
+              } else {
+                item.classList.add('far-right');
+              }
+            }
+          });
+
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.style.backgroundColor = '#0071e3';
+              dot.style.width = '10px';
+              dot.style.height = '10px';
+            } else {
+              dot.style.backgroundColor = '#d1d5db';
+              dot.style.width = '8px';
+              dot.style.height = '8px';
+            }
+          });
+
+          if (smooth) {
+            items[currentIndex].scrollIntoView({
+              behavior: 'smooth',
+              block: 'nearest',
+              inline: 'center'
+            });
+          }
+        }
+
+        function goNext() {
+          currentIndex = (currentIndex + 1) % totalItems;
+          updateCarousel(true);
+        }
+
+        function goPrev() {
+          currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+          updateCarousel(true);
+        }
+
+        if (prevBtn) prevBtn.onclick = goPrev;
+        if (nextBtn) nextBtn.onclick = goNext;
+
+        dots.forEach((dot, index) => {
+          dot.onclick = () => {
+            currentIndex = index;
+            updateCarousel(true);
+          };
+          dot.style.cursor = 'pointer';
+        });
+
+        updateCarousel(false);
+        console.log(`✅ Carousel con ${totalItems} items`);
+      }
+
+      const algebraCarousel = document.getElementById('algebra-carousel');
+      const algebraPrev = document.getElementById('algebra-prev');
+      const algebraNext = document.getElementById('algebra-next');
+
+      if (algebraCarousel) setupSimpleCarousel(algebraCarousel, algebraPrev, algebraNext, 1);
+    })();
+
+    // ============================================
+    // CARRUSEL AUTOMÁTICO DE FOTOS DEL HACKATHON
+    // ============================================
+    (function initHackathonCarousel() {
+      const slides = document.querySelectorAll('.hackathon-slide');
+      const dots = document.querySelectorAll('.hackathon-dot');
+      
+      if (slides.length === 0) return;
+      
+      let currentSlide = 1; // Empezamos desde el índice 1 (segunda foto)
+      const slideInterval = 2000; // 2 segundos
+
+      function showSlide(index) {
+        // Remover active de todos los slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+          slide.style.opacity = '0';
+        });
+
+        // Activar el slide actual
+        slides[index].classList.add('active');
+        slides[index].style.opacity = '1';
+
+        // Actualizar dots
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.style.backgroundColor = '#0071e3';
+            dot.style.width = '32px';
+          } else {
+            dot.style.backgroundColor = '#d1d5db';
+            dot.style.width = '8px';
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+
+      // Iniciar el carrusel automático
+      let autoplayInterval = setInterval(nextSlide, slideInterval);
+
+      // Pausar al hacer hover
+      const carouselContainer = document.querySelector('.hackathon-carousel');
+      if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+          clearInterval(autoplayInterval);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+          autoplayInterval = setInterval(nextSlide, slideInterval);
+        });
+      }
+
+      // Click en los dots para cambiar de slide
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+          // Reiniciar el autoplay
+          clearInterval(autoplayInterval);
+          autoplayInterval = setInterval(nextSlide, slideInterval);
+        });
+        dot.style.cursor = 'pointer';
+        dot.style.transition = 'all 0.3s ease';
+      });
+
+      // Mostrar el slide inicial
+      showSlide(currentSlide);
+      
+      console.log('✅ Carrusel de hackathon inicializado con ' + slides.length + ' fotos');
+    })();
+
+    (function initParallax() {
+      const parallaxElements = document.querySelectorAll('.glass-card, .stat-card');
+      
+      let ticking = false;
+      let lastScrollY = window.pageYOffset;
+
+      function updateParallax() {
+        const scrollY = window.pageYOffset;
+        const direction = scrollY > lastScrollY ? 1 : -1;
+        
+        parallaxElements.forEach((el, index) => {
+          const rect = el.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isVisible) {
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+            const parallaxAmount = scrollPercent * 30 * direction;
+            
+            el.style.transform = `translateY(${parallaxAmount * 0.3}px)`;
+          }
+        });
+        
+        lastScrollY = scrollY;
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
+
+    (function initCounters() {
+      const statNumbers = document.querySelectorAll('.stat-number');
+      
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current);
+          }
+        }, 16);
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.dataset.animated) {
+            entry.target.dataset.animated = 'true';
+            const text = entry.target.textContent;
+            
+            if (text.includes('%')) {
+              const number = parseInt(text.replace('%', ''));
+              animateCounter(entry.target, number, 1500);
+              setTimeout(() => {
+                entry.target.textContent = text;
+              }, 1500);
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+
+      statNumbers.forEach(stat => observer.observe(stat));
+    })();
+
+    (function initMagneticButtons() {
+      const buttons = document.querySelectorAll('.apple-button');
+      
+      buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          
+          button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+          button.style.transform = '';
+        });
+      });
+    })();
+
+    (function initStaggerAnimation() {
+      const cardGroups = document.querySelectorAll('.grid');
+      
+      cardGroups.forEach(group => {
+        const cards = group.querySelectorAll('.glass-card, .stat-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.staggered) {
+              const cards = entry.target.querySelectorAll('.glass-card, .stat-card');
+              cards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.style.opacity = '1';
+                  card.style.transform = 'translateY(0)';
+                }, index * 100);
+              });
+              entry.target.dataset.staggered = 'true';
+            }
+          });
+        }, { threshold: 0.2 });
+        
+        if (cards.length > 0) {
+          cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          });
+          observer.observe(group);
+        }
+      });
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('NEUROED - Apple-style animations initialized ✨');
+    });
+  </script>
+
+</body>
+</html>
